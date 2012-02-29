@@ -44,9 +44,15 @@ Ext.define('GeoExt.Map', {
     render: function(component) {
         var map = this.getMap();
         map.render(this.element.dom);
-        var center = this.getCenter(), zoom = this.getZoom();
+
+        var center = this.getCenter(),
+            zoom = this.getZoom(),
+            extent = this.getExtent();
+
         if (center && zoom) {
             map.setCenter(center, zoom);
+        } else if (extent) {
+            map.zoomToExtent(extent);
         } else {
             map.zoomToMaxExtent();
         }
