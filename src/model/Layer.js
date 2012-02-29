@@ -4,7 +4,10 @@ Ext.define('GeoExt.model.Layer', {
     config: {
         fields: [{
             name: 'name',
-            type: 'string'
+            convert: function(name, record) {
+                record.raw.setName(name);
+                return record.raw.name;
+            }
         }, {
             name: 'visibility',
             convert: function(visibility, record) {
@@ -12,22 +15,28 @@ Ext.define('GeoExt.model.Layer', {
                 return record.raw.getVisibility();
             }
         }, {
+            name: 'opacity',
+            convert: function(opacity, record) {
+                record.raw.setOpacity(opacity);
+                return record.raw.opacity;
+            }
+        },{
             name: 'map',
             convert: function(value, record) {
-                // value not used, readonly
+                // 'value' not used, readonly.
                 return record.raw.map;
             }
         }]
     },
 
     init: function() {
-        this.raw.events.on({
-            visibilitychanged: function(evt) {
-                // FIXME
-                //this.set('visibility', this.raw.getVisibility());
+        this.get('map').events.on({
+            changelayer: function(evt) {
+                if (evt.layer === this.raw) {
+                    // FIXME
+                }
             },
             scope: this
         });
-        // FIXME: changelayer, property == 'name'
     }
 });
