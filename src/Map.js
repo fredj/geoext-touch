@@ -8,10 +8,12 @@ Ext.define('GeoExt.Map', {
 
     config: {
         map: null,
+        mapOptions: {},
         layers: null,
+
         center: null,
         zoom: null,
-        mapOptions: {}
+        extent: null
     },
 
     initialize: function() {
@@ -61,6 +63,13 @@ Ext.define('GeoExt.Map', {
         var map = this.getMap();
         if (map) {
             map.zoomTo(zoom);
+        }
+    },
+
+    updateExtent: function(extent) {
+        var map = this.getMap();
+        if (map) {
+            map.zoomToExtent(extent);
         }
     }
 });
