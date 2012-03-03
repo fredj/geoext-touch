@@ -58,6 +58,10 @@ Ext.define('GeoExt.Map', {
         }
     },
 
+    getProjection: function() {
+        return this.getMap().getProjection();
+    },
+
     updateCenter: function(center) {
         var map = this.getMap();
         if (map) {
