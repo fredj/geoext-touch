@@ -17,10 +17,8 @@ Ext.define('GeoExt.Map', {
     initialize: function() {
         this.callParent(arguments);
 
-        this.on({
-            painted: 'render',
-            single: true,
-            scope: this
+        this.on('painted', this.render, this, {
+            single: true
         });
 
         this.setMap(new OpenLayers.Map(this.getMapOptions()));
