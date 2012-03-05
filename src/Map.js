@@ -1,5 +1,3 @@
-// FIXME: destroy, geolocation, events
-
 Ext.define('GeoExt.Map', {
     extend: 'Ext.Component',
     xtype: 'gx_map',
@@ -34,6 +32,14 @@ Ext.define('GeoExt.Map', {
         this.setLayers(Ext.create('GeoExt.data.LayerStore', {
             data: this.getMap().layers
         }));
+    },
+
+    destroy: function() {
+        var map = this.getMap();
+        if (map) {
+            map.destroy();
+        }
+        this.callParent();
     },
 
     forwardEvent: function(evt) {
