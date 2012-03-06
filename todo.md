@@ -1,2 +1,2 @@
- * geolocation plugin, based on Ext.util.GeoLocation
+ * geolocation plugin, based on Ext.util.Geolocation
  * layerswitcher
