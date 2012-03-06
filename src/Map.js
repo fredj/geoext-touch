@@ -5,6 +5,18 @@ Ext.define('GeoExt.Map', {
     requires: ['GeoExt.data.LayerStore'],
 
     config: {
+
+        /** api: event[longpress]
+         *  Fires when you touch and hold still for more than 1 second.
+         *
+         *  Listener arguments:
+         *
+         *   * this - :class:`GeoExt.Map` this
+         *   * lonlat - :class:`OpenLayers.LonLat` The pressed position in map coordinates
+         *   * map - :class:`OpenLayers.Map` The OpenLayers.Map object
+         *   * event - :class:`Ext.event.Event` The event encapsulating the DOM event.
+         */
+
         map: null,
         mapOptions: {},
         layers: null,
@@ -21,14 +33,14 @@ Ext.define('GeoExt.Map', {
             single: true
         });
 
-        this.element.on('longpress', function(evt, node) {
+        this.element.on('longpress', function(event, node) {
             // FIXME: depends on https://github.com/openlayers/openlayers/pull/294
-            this.fireEvent('longpress', this, Ext.apply(evt, {
-                lonlat: this.getMap().getLonLatFromViewPortPx({
-                    x: evt.pageX - this.element.getX(),
-                    y: evt.pageY - this.element.getY()
-                })
-            }));
+            var map = this.getMap();
+            var lonlat = map.getLonLatFromViewPortPx({
+                x: event.pageX - this.element.getX(),
+                y: event.pageY - this.element.getY()
+            });
+            this.fireEvent('longpress', this, lonlat, map, event);
         }, this);
 
         this.setMap(new OpenLayers.Map(this.getMapOptions()));

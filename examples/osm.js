@@ -24,8 +24,8 @@ Ext.application({
                     layers: [new OpenLayers.Layer.OSM()]
                 },
                 listeners: {
-                    longpress: function(map, evt) {
-                        alert(evt.lonlat.toString());
+                    longpress: function(map, lonlat, olmap, event) {
+                        alert(lonlat.toString());
                     }
                 }
             }]
