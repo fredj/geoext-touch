@@ -22,7 +22,7 @@ Ext.define('GeoExt.Map', {
         });
 
         this.element.on('longpress', function(evt, node) {
-            // FIXME: OpenLayers/Handler/Drag.js line 175, remove OpenLayers.Event.stop(evt)
+            // FIXME: depends on https://github.com/openlayers/openlayers/pull/294
             this.fireEvent('longpress', this, Ext.apply(evt, {
                 lonlat: this.getMap().getLonLatFromViewPortPx({
                     x: evt.pageX - this.element.getX(),
