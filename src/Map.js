@@ -21,6 +21,11 @@ Ext.define('GeoExt.Map', {
             single: true
         });
 
+        this.element.on('longpress', function(evt, node) {
+            // FIXME: add lonlat to evt
+            this.fireEvent('longpress', this, evt);
+        }, this);
+
         this.setMap(new OpenLayers.Map(this.getMapOptions()));
 
         this.getMap().events.on({
