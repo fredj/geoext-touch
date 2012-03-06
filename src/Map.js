@@ -63,7 +63,7 @@ Ext.define('GeoExt.Map', {
     },
 
     forwardEvent: function(evt) {
-        this.fireEvent(evt.type, evt);
+        this.fireEvent(evt.type, this, this.getMap(), evt);
     },
 
     // initial rendering
