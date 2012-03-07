@@ -8,7 +8,7 @@ Ext.Loader.setPath({
 
 Ext.application({
     name: 'GeoExt.example.osm',
-    requires: ['GeoExt.Map'],
+    requires: ['GeoExt.Map', 'GeoExt.plugin.StatefulMap'],
 
     launch: function() {
         Ext.create('Ext.Panel', {
@@ -23,6 +23,7 @@ Ext.application({
                     theme: false,
                     layers: [new OpenLayers.Layer.OSM()]
                 },
+                plugins: 'gx_statefulmap',
                 listeners: {
                     longpress: function(map, lonlat, olmap, event) {
                         alert(lonlat.toString());

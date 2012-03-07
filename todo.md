@@ -3,4 +3,4 @@
  * GeoExt.Map.getExtent
  * geolocation plugin, based on Ext.util.Geolocation
  * layerswitcher
- * stateful plugin: position
+ * stateful plugin: use map.id (or map.stateId ?)
