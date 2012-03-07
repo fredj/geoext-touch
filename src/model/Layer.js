@@ -30,13 +30,13 @@ Ext.define('GeoExt.model.Layer', {
     },
 
     init: function() {
-        this.get('map').events.on({
-            changelayer: function(evt) {
-                if (evt.layer === this.raw) {
-                    // FIXME
-                }
-            },
-            scope: this
-        });
+        // this.get('map').events.on({
+        //     changelayer: function(evt) {
+        //         if (evt.layer === this.raw) {
+        //             // FIXME
+        //         }
+        //     },
+        //     scope: this
+        // });
     }
 });
